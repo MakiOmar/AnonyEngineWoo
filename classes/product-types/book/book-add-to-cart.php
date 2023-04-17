@@ -11,6 +11,7 @@ global $product;
 do_action( 'anowoo_book_before_add_to_cart_form' );  ?>
 
 <form class="anowoo_book_cart" method="post" enctype='multipart/form-data'>
+
 	<table cellspacing="0">
 		<tbody>
 			<tr>

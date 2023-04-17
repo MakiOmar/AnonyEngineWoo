@@ -2,12 +2,22 @@
 if ( !defined('ABSPATH') ) exit();
 
 class WC_Product_ANOWOO_BBPRESS_TAB {
+    
+    /**
+     * @var array Product type meta fields
+     */
+    public $meta;
 
     /**
      * Build the instance
      * 
      */
     public function __construct( ) {
+      
+      $this->meta = [
+                'forum_start_date',
+                
+            ];
     	
     	//Add product type to selector dropdown
         add_filter( 'product_type_selector', [ $this, 'addToSelector'] );
@@ -106,23 +116,12 @@ class WC_Product_ANOWOO_BBPRESS_TAB {
                     update_post_meta( $post_id, $key, esc_attr( wp_strip_all_tags( $_POST[$key] ) ) );
         }
         
-        public function saveBbpress(){
-            
-            $meta = [
-                'forum_start_date',
-                
-            ];
-            
-            
-            foreach ($meta as $key) {
-                $this->update($key);
-            }
-        }
-        
         public function save(){
 
         
-            $this->saveBbpress();
+            foreach ($this->meta as $key) {
+                $this->update($key);
+            }
             
         }
 

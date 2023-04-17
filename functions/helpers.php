@@ -1,5 +1,102 @@
 <?php
 
+function wcpt_get_setting($option_name)
+{
+    $value = get_option( $option_name );
+    
+    if( $value && !empty( $option_name ) )
+    {
+        return $value;
+    }
+    
+    return false;
+}
+/**
+ * Read textarea content line by line.
+ *
+ * @param string $content To be read multi-line text.
+ * @return array An array of text's lines.
+ */
+function wcpt_line_by_line_textarea( $content ) {
+
+	return explode( "\r\n", trim( $content ) );
+
+}
+
+function wcpt_value_price($meta_key, $product_id){
+    $options = get_post_meta($product_id, $meta_key, true);
+    
+    if( $options && !empty( $options ) )
+    {
+        $options_array = wcpt_line_by_line_textarea($options);
+
+		if( $options_array && is_array($options_array) )
+		{
+		    $temp = array();
+		    foreach ($options_array as $value)
+		    {
+		        if( strpos($value, '|') !== false ){
+			        $value_arr = explode( '|', $value );
+			        if( !empty( $value_arr[1] ) )
+			        {
+			            $temp[$value_arr[0]] = $value_arr[1];
+			        }else{
+			            $temp[$value] = '0';
+			        }
+			        
+			    }else{
+			        $temp[$value] = '0';
+			    }
+		    }
+		    
+		    return $temp;
+		}
+    }
+    
+    return false;
+}
+function wcpt_render_select( $product_id, $meta_key, $suffix = false )
+{
+
+	$options = get_post_meta($product_id, $meta_key, true);
+	
+	$package_size_price = get_post_meta( $product_id, 'package_size_price', true );
+
+	if( !empty( $options ) )
+	{
+		$options_array = wcpt_line_by_line_textarea($options);
+
+		if( $options_array && is_array($options_array) )
+		{
+			?>
+			<select id="<?php echo  ($suffix) ? $meta_key . $suffix : $meta_key ?>" class="<?php echo  ($suffix) ? $meta_key . ' eye' . $suffix : $meta_key. ' eye' ?> eye_option" name="<?php echo  ($suffix) ? $meta_key . $suffix : $meta_key ?>">
+				<option value="">--</option>
+				<?php foreach ($options_array as $index => $value) {
+				    $price = '0';
+				    if( strpos($value, '|') !== false ){
+				        $value_arr = explode( '|', $value );
+				        
+				        $value = $value_arr[0];
+				        
+				        if( !empty( $value_arr[1] ) )
+				        {
+				            $price = $value_arr[1];
+				        }
+				    }
+				    /*
+				    if( 'package_size' == $meta_key && $index == 0 && !empty( $package_size_price )){
+				        $price = $package_size_price;
+				    }*/
+				?>
+					<option value="<?php echo esc_attr($value) ?>" data-price="<?php echo esc_attr($price) ?>"><?php echo esc_html($value) ?></option>
+				<?php } ?>
+
+			</select>
+			<?php
+		}
+	}
+
+}
 /**
  * Collects common post data.
  * 
