@@ -32,6 +32,8 @@ define('OPTICS_GETTEXT', serialize( array(
 $optics_text = unserialize( OPTICS_GETTEXT );
 $optics_inputs = [
     'size_price',
+    'base-curve',
+    'diameter',
     'eye_power',
     'eye_cylinder',
     'eye_ipd',
@@ -223,34 +225,37 @@ foreach( $optics_inputs as $key ){
 				</td>
 			</tr>
 
+            <?php if(!empty( $optics_inputs_values['base-curve'] ) ) { ?>
 			<tr>
-				<td >
-					<label for="anowoo_optic_amount"><?php echo $optics_text['base-curve']; ?></label>
-				</td>
 				<td>
-					8.6
-					<input type="hidden" name='base-curve' value='8.6'>
+					<label><?php echo $optics_text['base-curve']; ?></label>
+				</td>
+				<td class="eye-right-side">
+					<?php wcpt_render_select( $product->get_id(), 'base-curve', '_right' ) ?>
 				</td>
 
-				<td>
-					8.6
+				<td class="eye-left-side">
+					<?php wcpt_render_select( $product->get_id(), 'base-curve', '_left' ) ?>
 				</td>
 			</tr>
+			<?php } ;?>
 
 
+            <?php if(!empty( $optics_inputs_values['diameter'] ) ) { ?>
 			<tr>
-				<td >
+				<td>
 					<label><?php echo $optics_text['diameter']; ?></label>
 				</td>
-				<td>
-					14.5
-					<input type="hidden" name='diameter' value='14.5'>
+				<td class="eye-right-side">
+					<?php wcpt_render_select( $product->get_id(), 'diameter', '_right' ) ?>
 				</td>
 
-				<td>
-					14.5
+				<td class="eye-left-side">
+					<?php wcpt_render_select( $product->get_id(), 'diameter', '_left' ) ?>
 				</td>
 			</tr>
+			<?php } ;?>
+
 
             <?php if(!empty( $optics_inputs_values['eye_power'] ) ) { ?>
 			<tr class="with-power">

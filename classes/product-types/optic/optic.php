@@ -56,11 +56,13 @@ function anowoo_optic_template () {
 
 define('WCPT_OPTICAL_FIELDS', serialize( array(
     'which-eye',
-    'base-curve',
-    'diameter',
+    'base-curve_right',
+    'diameter_right',
     'eye_power_right',
     'eye_cylinder_right',
     'eye_axis_right',
+    'base-curve_left',
+    'diameter_left',
     'eye_power_left',
     'eye_cylinder_left',
     'eye_axis_left',
