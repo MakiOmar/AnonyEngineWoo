@@ -429,13 +429,12 @@ foreach( $optics_inputs as $key ){
 			{
 			    
 			    if( $('input[name="with-power"]').is(':checked') ){
-			        console.log($('input[name="with-power"]').is(':checked'));
 			        $('.eye_' + object.val() ).removeClass('disabled');
 				    $('.eye_' + object.val() ).attr( 'disabled', false );
 				    $('.with-power').show();
 			    }else{
-			        $('.eye_' + object.val() ).addClass('disabled');
-				    $('.eye_' + object.val() ).attr( 'disabled', true );
+			        $('.eye_' + object.val() + ':not(.base-curve, .diameter)' ).addClass('disabled');
+				    $('.eye_' + object.val() + ':not(.base-curve, .diameter)' ).attr( 'disabled', true );
 			        $('input.eye_' + object.val() ).removeClass('disabled');
 				    $('input.eye_' + object.val() ).attr( 'disabled', false );
 				    $('.with-power').hide();
@@ -444,8 +443,8 @@ foreach( $optics_inputs as $key ){
 				
 				$('.errormsg').text('');
 			}else{
-				$('.eye_' + object.val() ).addClass('disabled');
-				$('.eye_' + object.val() ).attr( 'disabled', true );
+				$('.eye_' + object.val() + ':not(.base-curve, .diameter)' ).addClass('disabled');
+				$('.eye_' + object.val() + ':not(.base-curve, .diameter)' ).attr( 'disabled', true );
                 
 
 			}
