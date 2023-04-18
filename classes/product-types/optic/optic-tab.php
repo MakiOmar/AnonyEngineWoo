@@ -16,6 +16,8 @@ class WC_Product_ANOWOO_OPTIC_TAB {
     	
     	$this->meta = [
                 'size_price',
+                'base-curve',
+                'diameter',
                 'eye_power',
                 'eye_cylinder',
                 'eye_ipd',
@@ -117,6 +119,35 @@ class WC_Product_ANOWOO_OPTIC_TAB {
                             )
                         );
                         
+                        woocommerce_wp_textarea_input(
+                            array(
+                              'id' => 'base-curve',
+                              'label' => __( 'Base curve', 'wcpt' ),
+                              'placeholder' => '',
+                              'desc_tip' => 'true',
+                              'description' => __( 'Add one base curve per line', 'wcpt' ),
+                              'rows' => 30,
+                              'columns' => 50,
+                              'style' => "direction:ltr;text-align:left",
+ 
+                            )
+                        );
+
+                        
+                        woocommerce_wp_textarea_input(
+                            array(
+                              'id' => 'diameter',
+                              'label' => __( 'Diameter', 'wcpt' ),
+                              'placeholder' => '',
+                              'desc_tip' => 'true',
+                              'description' => __( 'Add one diameter per line', 'wcpt' ),
+                              'rows' => 30,
+                              'columns' => 50,
+                              'style' => "direction:ltr;text-align:left",
+ 
+                            )
+                        );
+
                         woocommerce_wp_textarea_input(
                             array(
                               'id' => 'eye_power',
