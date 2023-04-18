@@ -74,7 +74,7 @@ foreach( $optics_inputs as $key ){
 	#optics-options thead > tr > th, #optics-options > tbody > tr > td, #optics-options > tr > th, #optics-options > tr > td {
         padding: 5px;
         border: 1px solid #dddddd;
-        
+        text-align: initial;
 	}
 	
 	input.qty{
@@ -95,7 +95,6 @@ foreach( $optics_inputs as $key ){
 		background-color: #fff;
 		border: 1px solid #dddddd;
 		padding: 5px;
-		direction: ltr;
 	}
 	#optics-options .eye_option.disabled{
 		background-color:#dddddd
