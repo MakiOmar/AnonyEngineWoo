@@ -4,7 +4,7 @@ if ( !defined('ABSPATH') ) exit();
  * Plugin Name: Optical products
  * Plugin URI: https://makiomar.com
  * Description: Add a new optical product type for woocommerce
- * Version: 1.0.4
+ * Version: 1.0.5
  * Author: Mohammad Omar
  * Author URI: https://makiomar.com
  * Text Domain: wcpt
