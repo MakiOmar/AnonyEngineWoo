@@ -70,7 +70,10 @@ function wcpt_render_select( $product_id, $meta_key, $suffix = false )
 		{
 			?>
 			<select id="<?php echo  ($suffix) ? $meta_key . $suffix : $meta_key ?>" class="<?php echo  ($suffix) ? $meta_key . ' eye' . $suffix : $meta_key. ' eye' ?> eye_option" name="<?php echo  ($suffix) ? $meta_key . $suffix : $meta_key ?>">
-				<option value="">--</option>
+				<?php  if( !in_array( $meta_key, array( 'base-curve', 'diameter' ) ) ) { ?>
+					<option value="">--</option>
+				<?php } ?>
+				
 				<?php foreach ($options_array as $index => $value) {
 				    $price = '0';
 				    if( strpos($value, '|') !== false ){
