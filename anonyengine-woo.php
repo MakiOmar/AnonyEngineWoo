@@ -29,6 +29,15 @@ add_action(
  */ 
 define('ANOWOO_DIR' , wp_normalize_path(plugin_dir_path( __FILE__ )));
 
+/**
+ * Holds plugin's slug
+ *
+ * @const
+ */
+define( 'ANOWOO_PLUGIN_SLUG', plugin_basename(__FILE__) );
+
+require ANOWOO_DIR . 'plugin-update-checker/plugin-update-checker.php';
+
 require_once (wp_normalize_path( ANOWOO_DIR . '/config.php' ));
 
 require_once (wp_normalize_path( ANOWOO_FUNCTIONS_DIR . '/shortcodes/woo-query-by-type.php' ));
@@ -38,4 +47,13 @@ require_once (wp_normalize_path( ANOWOO_CLASSES . '/class-anony-wc-settings-tab.
 
 new WC_Product_ANOWOO_LOADER();
 
+
+$anonyengine_update_checker = Puc_v4_Factory::buildUpdateChecker(
+    'https://github.com/MakiOmar/AnonyEngineWoo',
+    __FILE__,
+    ANOWOO_PLUGIN_SLUG
+);
+
+//Set the branch that contains the stable release.
+$anonyengine_update_checker->setBranch('main');
 
