@@ -1,0 +1,298 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Optical products\n"
+"POT-Creation-Date: 2023-04-17 13:54+0200\n"
+"PO-Revision-Date: 2023-04-17 13:55+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: anonyengine-woo.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: classes/product-types/bbpress/bbpress-tab.php:42
+msgid "bbPress membership"
+msgstr ""
+
+#: classes/product-types/bbpress/bbpress-tab.php:55
+msgid "Forum options"
+msgstr ""
+
+#: classes/product-types/bbpress/bbpress-tab.php:74
+#: classes/product-types/bbpress/bbpress-tab.php:77
+#: classes/product-types/book/book-tab.php:80
+#: classes/product-types/book/book-tab.php:83
+#, php-format
+msgid "Regular price (%s)"
+msgstr ""
+
+#: classes/product-types/bbpress/bbpress-tab.php:83
+#: classes/product-types/bbpress/bbpress-tab.php:86
+#: classes/product-types/book/book-tab.php:89
+#: classes/product-types/book/book-tab.php:92
+#, php-format
+msgid "Sale price (%s)"
+msgstr ""
+
+#: classes/product-types/bbpress/bbpress-tab.php:95
+msgid "Forum start date"
+msgstr ""
+
+#: classes/product-types/bbpress/bbpress-tab.php:98
+msgid "Choose Date"
+msgstr ""
+
+#: classes/product-types/book/book-add-to-cart.php:19
+msgid "Amount"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:49
+msgid "Book"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:62
+msgid "Book meta"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:102
+#: classes/product-types/book/book-tab.php:105
+msgid "Book code"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:114
+#: classes/product-types/book/book-tab.php:117
+msgid "Book author"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:125
+#: classes/product-types/book/book-tab.php:128
+msgid "Book numper of pages"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:136
+#: classes/product-types/book/book-tab.php:139
+msgid "Book publish date"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:148
+#: classes/product-types/book/book-tab.php:151
+msgid "Book publisher"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:160
+#: classes/product-types/book/book-tab.php:163
+msgid "Book cover"
+msgstr ""
+
+#: classes/product-types/book/book-tab.php:172
+#: classes/product-types/book/book-tab.php:175
+msgid "Book units number"
+msgstr ""
+
+#: classes/product-types/book/book.php:26
+#: classes/product-types/optic/optic.php:30
+msgid "Buy Now"
+msgstr ""
+
+#: classes/product-types/book/book.php:30
+#: classes/product-types/optic/optic.php:34
+msgid "Add to cart"
+msgstr ""
+
+#: classes/product-types/optic/inventory.php:16
+msgid "Manage stock"
+msgstr ""
+
+#: classes/product-types/optic/inventory.php:17
+msgid "Enable stock management at product level"
+msgstr ""
+
+#: classes/product-types/optic/inventory.php:25
+msgid "Stock quantity"
+msgstr ""
+
+#: classes/product-types/optic/inventory.php:27
+msgid "Current stock quantity."
+msgstr ""
+
+#: classes/product-types/optic/optic-add-to-cart.php:15
+#: classes/product-types/optic/optic-tab.php:123
+#: classes/product-types/optic/optic.php:75
+msgid "Power"
+msgstr "ضعف النظر"
+
+#: classes/product-types/optic/optic-add-to-cart.php:16
+#: classes/product-types/optic/optic-tab.php:137
+#: classes/product-types/optic/optic.php:76
+msgid "Cylinder"
+msgstr "الإنحراف"
+
+#: classes/product-types/optic/optic-add-to-cart.php:17
+#: classes/product-types/optic/optic-tab.php:166
+#: classes/product-types/optic/optic.php:77
+msgid "Axis"
+msgstr "زاوية الإنحراف"
+
+#: classes/product-types/optic/optic-add-to-cart.php:18
+#: classes/product-types/optic/optic.php:78
+msgid "Add"
+msgstr "قوة الإضافة للقراءه"
+
+#: classes/product-types/optic/optic-add-to-cart.php:19
+#: classes/product-types/optic/optic.php:79
+msgid "Ipd"
+msgstr "المسافه بين العينين"
+
+#: classes/product-types/optic/optic-add-to-cart.php:20
+#: classes/product-types/optic/optic.php:74
+#: classes/product-types/optic/optic.php:80
+msgid "Eye"
+msgstr "العين"
+
+#: classes/product-types/optic/optic-add-to-cart.php:21
+#: classes/product-types/optic/optic.php:81
+msgid "Right"
+msgstr "يمين"
+
+#: classes/product-types/optic/optic-add-to-cart.php:22
+#: classes/product-types/optic/optic.php:82
+msgid "Left"
+msgstr "يسار"
+
+#: classes/product-types/optic/optic-add-to-cart.php:23
+#: classes/product-types/optic/optic.php:83
+msgid "Base curve"
+msgstr "الانحناء الأساسي"
+
+#: classes/product-types/optic/optic-add-to-cart.php:24
+#: classes/product-types/optic/optic.php:84
+msgid "Diameter"
+msgstr "قطر"
+
+#: classes/product-types/optic/optic-add-to-cart.php:25
+#: classes/product-types/optic/optic.php:85
+msgid "Quantity"
+msgstr "الكمية"
+
+#: classes/product-types/optic/optic-add-to-cart.php:26
+#: classes/product-types/optic/optic.php:86
+msgid "Right package quantity"
+msgstr "الكمية للعين اليمنى"
+
+#: classes/product-types/optic/optic-add-to-cart.php:27
+#: classes/product-types/optic/optic.php:87
+msgid "Left package quantity"
+msgstr "الكمية للعين اليسرى"
+
+#: classes/product-types/optic/optic-add-to-cart.php:28
+#: classes/product-types/optic/optic-tab.php:193
+#: classes/product-types/optic/optic.php:88
+msgid "Package size"
+msgstr "حجم العبوة"
+
+#: classes/product-types/optic/optic-add-to-cart.php:29
+#: classes/product-types/optic/optic.php:89
+msgid "Accessory only"
+msgstr "للزينة فقط"
+
+#: classes/product-types/optic/optic-add-to-cart.php:30
+#: classes/product-types/optic/optic.php:90
+msgid "With a prescription"
+msgstr "بوصفة طبية"
+
+#: classes/product-types/optic/optic-tab.php:49
+msgid "Optic"
+msgstr "عدسات لاصقة"
+
+#: classes/product-types/optic/optic-tab.php:62
+msgid "Optical settings"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:111
+msgid "Price per size"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:114
+msgid "Applicable for all sizes"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:126
+msgid "Add one power per line"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:140
+msgid "Add one cylinder per line"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:152
+msgid "IPD"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:155
+msgid "Add one IPD per line"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:169
+msgid "Add one axis per line"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:180
+msgid "ADD"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:183
+msgid "Add one ADD per line"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:196
+msgid "Add one package_size per line"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:208
+msgid "Package price"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:230
+msgid "Color name"
+msgstr ""
+
+#: classes/product-types/optic/optic-tab.php:257
+msgid "lens variaions"
+msgstr ""
+
+#: functions/helpers.php:146
+msgid "Sale!"
+msgstr ""
+
+#: functions/shortcodes/woo-query-by-type.php:54
+msgid "No products found"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Optical products"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+#. Author URI of the plugin/theme
+msgid "https://makiomar.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Add a new optical product type for woocommerce"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Mohammad Omar"
+msgstr ""

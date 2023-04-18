@@ -2,12 +2,29 @@
 if ( !defined('ABSPATH') ) exit();
 
 class WC_Product_ANOWOO_BOOK_TAB {
+	
+	/**
+	 * @var array Product type meta fields
+	 */
+	public $meta;
 
     /**
      * Build the instance
      * 
      */
     public function __construct( ) {
+    	
+    	$this->meta = [
+                'book_code',
+                'book_author',
+                'book_pages_number',
+                'book_publish_date',
+                'book_publisher',
+                'book_cover',
+                'book_units_number',
+                
+            ];
+    
     	
     	//Add product type to selector dropdown
         add_filter( 'product_type_selector', [ $this, 'addToSelector'] );
@@ -44,7 +61,7 @@ class WC_Product_ANOWOO_BOOK_TAB {
             $tabs['book'] = array(
               'label'    => __( 'Book meta', ANOWOO_TEXTDOM ),
               'target' => 'book_meta',
-              'class'  => 'show_if_bbPress hide_if_simple hide_if_variable hide_if_grouped hide_if_external',
+              'class'  => 'show_if_bbPress hide_if_anowoo_optic hide_if_simple hide_if_variable hide_if_grouped hide_if_external',
              );
             return $tabs;
         }
@@ -177,30 +194,13 @@ class WC_Product_ANOWOO_BOOK_TAB {
                     update_post_meta( $post_id, $key, esc_attr( wp_strip_all_tags( $_POST[$key] ) ) );
         }
         
-        public function saveBook($post_id){
-            
-            $meta = [
-                'book_code',
-                'book_author',
-                'book_pages_number',
-                'book_publish_date',
-                'book_publisher',
-                'book_cover',
-                'book_units_number',
-                
-            ];
-            
-            
-            foreach ($meta as $key) {
-                $this->update($key, $post_id);
-            }
-        }
-        
         
         public function save($post_id){
             
                         
-            $this->saveBook($post_id);
+            foreach ($this->meta as $key) {
+                $this->update($key, $post_id);
+            }
         
            
             
