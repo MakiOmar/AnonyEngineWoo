@@ -27,7 +27,7 @@ class WC_Product_ANOWOO_OPTIC extends WC_Product {
     	
     	switch ( $product_type ) {
     		case 'anowoo_optic':
-    			return __( 'Buy Now', 'woocommerce' );
+    			return __( 'Add to cart', 'woocommerce' );
     		break;
     		
     		default:
@@ -193,16 +193,14 @@ add_filter( 'woocommerce_order_item_display_meta_key', function ( $display_key, 
 add_filter( 'woocommerce_get_item_data', function ( $item_data, $cart_item ) {
    
     $fields = unserialize( WCPT_OPTICAL_FIELDS );
-    
-    $cart_texts = unserialize( OPTICS_GETTEXT_CART );
-    
+        
     foreach( $fields as $field ){
         if ( isset( $cart_item[$field] ) ) {
             
             
            $item_data[] = array(
-               //'key'   => ucfirst(str_replace( ['_', '-'], ' ', $field )),
-               'key'   => $cart_texts[$field],
+               'key'   => ucfirst(str_replace( ['_', '-'], ' ', $field )),
+               //'key'   => $cart_texts[$field],
                'value' => ($field == 'which-eye') ? implode(',', $cart_item[$field]) : $cart_item[$field]
            );
        }
@@ -212,17 +210,6 @@ add_filter( 'woocommerce_get_item_data', function ( $item_data, $cart_item ) {
    return $item_data;
 }, 10, 2 );
 
-/*
-add_filter( 'woocommerce_cart_item_price', function ( $price, $cart_item, $cart_item_key ) {
-    
-    if ( isset( $cart_item['size_price'] ) ) {
-
-       $price = $cart_item['data']->get_price() + $cart_item['size_price'];
-
-    }
-    return $price;
-}, 10, 3 );
-*/
 
 add_action( 'woocommerce_before_calculate_totals', function ( $cart_object ) {
 

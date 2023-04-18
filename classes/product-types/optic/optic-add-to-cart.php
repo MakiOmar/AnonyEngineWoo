@@ -128,6 +128,7 @@ foreach( $optics_inputs as $key ){
     #anowoo_optic_cart .toggle-switch:after, #anowoo_optic_cart .toggle-switch:before{
         display:block;
         position: absolute;
+        top: 0;
         text-transform: uppercase;
         font-size: 12px;
         line-height: 34px;
@@ -138,7 +139,6 @@ foreach( $optics_inputs as $key ){
         border: 1px solid #ccc;
         margin: -1px -1px 0 -1px;
         text-align: center;
-        position: absolute;
         color: #000;
         text-shadow: 0 0 1px #fff;
     }
@@ -157,6 +157,9 @@ foreach( $optics_inputs as $key ){
     #anowoo_optic_cart .toggle-switch:after{
         content:'<?php echo $optics_text['prescription'] ?>';
         right:0;
+    }
+    input[name=with-power]{
+    	display: none!important;
     }
 </style>
 <?php
@@ -482,12 +485,15 @@ foreach( $optics_inputs as $key ){
     		//$('.price').find( 'bdi' ).text(productTotal);
     		$('.price').each( function(){
     		    var currency = $(this).find( '.woocommerce-Price-currencySymbol' );
-    		    if( $(this).find('del').length > 0 ){
-    		        var ins = $(this).find('ins');
-    		        ins.find( 'bdi' ).html( productTotal +  currency[0].outerHTML );
-    		    }else{
-    		        $(this).find( 'bdi' ).html( productTotal +  currency[0].outerHTML );
+    		    if( currency[0] !== undefined ){
+    		    	if( $(this).find('del').length > 0 ){
+	    		        var ins = $(this).find('ins');
+	    		        ins.find( 'bdi' ).html( productTotal +  currency[0].outerHTML );
+	    		    }else{
+	    		        $(this).find( 'bdi' ).html( productTotal +  currency[0].outerHTML );
+	    		    }
     		    }
+    		    
     		} );
 
     		$( '#eyedeal' ).val(productTotal);

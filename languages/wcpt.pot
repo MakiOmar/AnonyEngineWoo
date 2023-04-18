@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Optical products\n"
-"POT-Creation-Date: 2023-04-17 13:46+0200\n"
+"POT-Creation-Date: 2023-04-17 13:54+0200\n"
 "PO-Revision-Date: 2023-04-17 04:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -128,85 +128,86 @@ msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:15
 #: classes/product-types/optic/optic-tab.php:123
-#: classes/product-types/optic/optic.php:74
+#: classes/product-types/optic/optic.php:75
 msgid "Power"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:16
 #: classes/product-types/optic/optic-tab.php:137
-#: classes/product-types/optic/optic.php:75
+#: classes/product-types/optic/optic.php:76
 msgid "Cylinder"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:17
 #: classes/product-types/optic/optic-tab.php:166
-#: classes/product-types/optic/optic.php:76
+#: classes/product-types/optic/optic.php:77
 msgid "Axis"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:18
-#: classes/product-types/optic/optic.php:77
+#: classes/product-types/optic/optic.php:78
 msgid "Add"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:19
-#: classes/product-types/optic/optic.php:78
+#: classes/product-types/optic/optic.php:79
 msgid "Ipd"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:20
-#: classes/product-types/optic/optic.php:79
+#: classes/product-types/optic/optic.php:74
+#: classes/product-types/optic/optic.php:80
 msgid "Eye"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:21
-#: classes/product-types/optic/optic.php:80
+#: classes/product-types/optic/optic.php:81
 msgid "Right"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:22
-#: classes/product-types/optic/optic.php:81
+#: classes/product-types/optic/optic.php:82
 msgid "Left"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:23
-#: classes/product-types/optic/optic.php:82
+#: classes/product-types/optic/optic.php:83
 msgid "Base curve"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:24
-#: classes/product-types/optic/optic.php:83
+#: classes/product-types/optic/optic.php:84
 msgid "Diameter"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:25
-#: classes/product-types/optic/optic.php:84
+#: classes/product-types/optic/optic.php:85
 msgid "Quantity"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:26
-#: classes/product-types/optic/optic.php:85
+#: classes/product-types/optic/optic.php:86
 msgid "Right package quantity"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:27
-#: classes/product-types/optic/optic.php:86
+#: classes/product-types/optic/optic.php:87
 msgid "Left package quantity"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:28
 #: classes/product-types/optic/optic-tab.php:193
-#: classes/product-types/optic/optic.php:87
+#: classes/product-types/optic/optic.php:88
 msgid "Package size"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:29
-#: classes/product-types/optic/optic.php:88
+#: classes/product-types/optic/optic.php:89
 msgid "Accessory only"
 msgstr ""
 
 #: classes/product-types/optic/optic-add-to-cart.php:30
-#: classes/product-types/optic/optic.php:89
+#: classes/product-types/optic/optic.php:90
 msgid "With a prescription"
 msgstr ""
 
