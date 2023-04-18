@@ -442,8 +442,8 @@ foreach( $optics_inputs as $key ){
 				
 				$('.errormsg').text('');
 			}else{
-				$('.eye_' + object.val() + ':not(.base-curve, .diameter)' ).addClass('disabled');
-				$('.eye_' + object.val() + ':not(.base-curve, .diameter)' ).attr( 'disabled', true );
+				$('.eye_' + object.val()  ).addClass('disabled');
+				$('.eye_' + object.val()  ).attr( 'disabled', true );
                 
 
 			}
