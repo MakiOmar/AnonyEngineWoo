@@ -454,36 +454,38 @@ foreach( $optics_inputs as $key ){
 		    var productTotal = 0;
 		    var packageSizPrice = 0;
 		    var productPrice = parseInt($('#temp_product_price').val());
-
+			
 		    $(".which-eye").each(function() {
     			if( $(this).is(':checked') ){
     			   var checkedQuantity = parseInt($('input[name=eye-'+$(this).val()+'-quantity]').val());
     			   
     			   var sizePrice = parseInt($('input[name=size_price_' + $(this).val() + ']').val());
     		
+                    if( $('#package_size').length > 0 ){
+                        var selectedPackageSize = $('#package_size').find('option:selected');
 
-    			   var selectedPackageSize = $('#package_size').find('option:selected');
-            
-                    if( selectedPackageSize.val() !== '' ){
-                        // Get the price value from the data-price attribute
-                        packageSizPrice = parseInt(selectedPackageSize.data('price'));
-                		
-                	
+                        if( selectedPackageSize.val() !== '' ){
+                            // Get the price value from the data-price attribute
+                            packageSizPrice = parseInt(selectedPackageSize.data('price'));
+
+
+                        }
                     }
-                    
-                    console.log();
-                    
+
                     productTotal += checkedQuantity * (productPrice + sizePrice + packageSizPrice);
     			   
     			}
     
     		});
+            
+            
     		
                 		
     		if( productTotal == 0 )
     		{
     		    productTotal = productPrice;
     		}
+            
     		
     		//$('.price').find( 'bdi' ).text(productTotal);
     		$('.price').each( function(){
@@ -630,4 +632,4 @@ foreach( $optics_inputs as $key ){
     ?>
     <input type="hidden" id="temp_product_price"  name="temp_product_price" value="<?php echo esc_attr($product->get_price()) ?>"/>
     <?php
-}); 
+});
