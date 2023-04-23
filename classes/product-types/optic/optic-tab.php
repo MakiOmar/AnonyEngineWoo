@@ -38,7 +38,7 @@ class WC_Product_ANOWOO_OPTIC_TAB {
         add_action( 'woocommerce_product_data_panels', [ $this, 'tabPanel'] );
         
         //Save meta data
-        add_action( 'woocommerce_process_product_meta', [ $this, 'save'] );
+        add_action( 'woocommerce_admin_process_product_object', [ $this, 'save'] );
         
     }
     
@@ -308,18 +308,21 @@ class WC_Product_ANOWOO_OPTIC_TAB {
          * @param string $key 
          * @return void
          */
-        public function update($key, $post_id){
+        public function update($key, $product){
             
-            if( !empty( $_POST[$key] ) ) 
-                    update_post_meta( $post_id, $key,  wp_strip_all_tags( $_POST[$key] )  );
+            if( !empty( $_POST[$key] ) ){
+                // Update the product meta with the custom field values
+                $product->update_meta_data( $key , wp_strip_all_tags( $_POST[$key] ) );
+
+                // Save the product data
+                $product->save();   
+            }
         }
         
         
-        public function save($post_id){
-            
-                        
+        public function save($product){                        
             foreach ($this->meta as $key) {
-                $this->update($key, $post_id);
+                $this->update($key, $product);
             }
         
            
@@ -583,5 +586,3 @@ function my_save_product_data( $post_id ) {
     
     
 }
-
-

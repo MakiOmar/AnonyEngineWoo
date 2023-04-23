@@ -29,7 +29,7 @@ class WC_Product_ANOWOO_BBPRESS_TAB {
         add_action( 'woocommerce_product_data_panels', [ $this, 'tabPanel'] );
         
         //Save meta data
-        add_action( 'woocommerce_process_product_meta', [ $this, 'save'] );
+        add_action( 'woocommerce_admin_process_product_object', [ $this, 'save'] );
         
     }
     
@@ -110,18 +110,24 @@ class WC_Product_ANOWOO_BBPRESS_TAB {
          * @param string $key 
          * @return void
          */
-        public function update($key){
+        public function update($key, $product){
             
-            if( !empty( $_POST[$key] ) ) 
-                    update_post_meta( $post_id, $key, esc_attr( wp_strip_all_tags( $_POST[$key] ) ) );
+            if( !empty( $_POST[$key] ) ){
+                // Update the product meta with the custom field values
+                $product->update_meta_data( $key , wp_strip_all_tags( $_POST[$key] ) );
+
+                // Save the product data
+                $product->save();   
+            }
         }
         
-        public function save(){
-
         
+        public function save($product){                        
             foreach ($this->meta as $key) {
-                $this->update($key);
+                $this->update($key, $product);
             }
+        
+           
             
         }
 
