@@ -29,7 +29,7 @@ class WC_Product_ANOWOO_BBPRESS_TAB {
         add_action( 'woocommerce_product_data_panels', [ $this, 'tabPanel'] );
         
         //Save meta data
-        add_action( 'woocommerce_admin_process_product_object', [ $this, 'save'] );
+        add_action( 'woocommerce_admin_process_product_object', [ $this, 'save'], 99);
         
     }
     

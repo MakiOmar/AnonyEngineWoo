@@ -38,7 +38,7 @@ class WC_Product_ANOWOO_OPTIC_TAB {
         add_action( 'woocommerce_product_data_panels', [ $this, 'tabPanel'] );
         
         //Save meta data
-        add_action( 'woocommerce_admin_process_product_object', [ $this, 'save'] );
+        add_action( 'woocommerce_admin_process_product_object', [ $this, 'save'], 99 );
         
     }
     
@@ -567,7 +567,7 @@ add_action('admin_head', function(){?>
 <?php });
 
 
-//add_action( 'woocommerce_process_product_meta', 'my_save_product_data' );
+add_action( 'woocommerce_process_product_meta', 'my_save_product_data' );
 function my_save_product_data( $post_id ) {
     $optics_inputs = [
         'size_price',

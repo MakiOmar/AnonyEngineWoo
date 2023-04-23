@@ -45,7 +45,7 @@ require_once (wp_normalize_path( ANOWOO_FUNCTIONS_DIR . '/shortcodes/woo-query-b
 require_once (wp_normalize_path( ANOWOO_FUNCTIONS_DIR . '/helpers.php' ));
 require_once (wp_normalize_path( ANOWOO_CLASSES . '/class-anony-wc-settings-tab.php' ));
 
-//new WC_Product_ANOWOO_LOADER();
+new WC_Product_ANOWOO_LOADER();
 
 
 $anonyengine_update_checker = Puc_v4_Factory::buildUpdateChecker(
