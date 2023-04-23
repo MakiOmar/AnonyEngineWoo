@@ -4,7 +4,7 @@ if ( !defined('ABSPATH') ) exit();
  * Plugin Name: Optical products
  * Plugin URI: https://makiomar.com
  * Description: Add a new optical product type for woocommerce
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: Mohammad Omar
  * Author URI: https://makiomar.com
  * Text Domain: wcpt
@@ -45,7 +45,7 @@ require_once (wp_normalize_path( ANOWOO_FUNCTIONS_DIR . '/shortcodes/woo-query-b
 require_once (wp_normalize_path( ANOWOO_FUNCTIONS_DIR . '/helpers.php' ));
 require_once (wp_normalize_path( ANOWOO_CLASSES . '/class-anony-wc-settings-tab.php' ));
 
-new WC_Product_ANOWOO_LOADER();
+//new WC_Product_ANOWOO_LOADER();
 
 
 $anonyengine_update_checker = Puc_v4_Factory::buildUpdateChecker(
