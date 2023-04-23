@@ -310,13 +310,11 @@ class WC_Product_ANOWOO_OPTIC_TAB {
          */
         public function update($key, $product){
             
-            if( !empty( $_POST[$key] ) ){
                 // Update the product meta with the custom field values
                 $product->update_meta_data( $key , wp_strip_all_tags( $_POST[$key] ) );
 
                 // Save the product data
                 $product->save();   
-            }
         }
         
         
@@ -565,24 +563,3 @@ add_action('admin_head', function(){?>
         }
     </style>
 <?php });
-
-
-add_action( 'woocommerce_process_product_meta', 'my_save_product_data' );
-function my_save_product_data( $post_id ) {
-    $optics_inputs = [
-        'size_price',
-        'eye_power',
-        'eye_cylinder',
-        'eye_ipd',
-        'eye_axis',
-        'eye_add',
-        'package_size',
-        'lens_variaions'
-    ];
-    
-    foreach( $optics_inputs as $key ){
-        update_post_meta( $post_id, $key, $_POST[$key] );
-    }
-    
-    
-}

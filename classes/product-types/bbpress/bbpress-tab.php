@@ -111,14 +111,12 @@ class WC_Product_ANOWOO_BBPRESS_TAB {
          * @return void
          */
         public function update($key, $product){
-            
-            if( !empty( $_POST[$key] ) ){
-                // Update the product meta with the custom field values
+                            // Update the product meta with the custom field values
                 $product->update_meta_data( $key , wp_strip_all_tags( $_POST[$key] ) );
 
                 // Save the product data
                 $product->save();   
-            }
+            
         }
         
         
