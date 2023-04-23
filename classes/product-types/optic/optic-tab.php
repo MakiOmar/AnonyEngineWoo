@@ -564,14 +564,7 @@ add_action('admin_head', function(){?>
 <?php });
 
 
-function escape_json_quotes( $post_id) {
-    return;
-    error_log( print_r($_POST, true) );
-    
-}
-add_action( 'save_post', 'escape_json_quotes', 10, 4 );
-
-add_action( 'woocommerce_process_product_meta', 'my_save_product_data' );
+//add_action( 'woocommerce_process_product_meta', 'my_save_product_data' );
 function my_save_product_data( $post_id ) {
     $optics_inputs = [
         'size_price',
