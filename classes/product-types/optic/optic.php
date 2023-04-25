@@ -51,8 +51,18 @@ function anowoo_optic_template () {
             '',
             '',
             trailingslashit( $template_path ) );
+    }else{
+        global $product;
+        do_action( 'woocommerce_' . $product->get_type() . '_add_to_cart' );
     }
 }
+
+add_shortcode( 'optic-add-to-cart', function(){
+    ob_start();
+        anowoo_optic_template ();
+    return ob_get_clean();
+
+} );
 
 define('WCPT_OPTICAL_FIELDS', serialize( array(
     'which-eye',
