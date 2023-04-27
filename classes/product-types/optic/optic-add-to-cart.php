@@ -627,6 +627,8 @@ foreach( $optics_inputs as $key ){
 <?php do_action( 'anowoo_optic_after_add_to_cart_form' ); ?>
 
 <?php add_action( 'wp_footer', function(){
+	
+	if( !is_singular( 'product' ) ) return;
     
     global $product;
     ?>
