@@ -55,9 +55,9 @@ if(!class_exists('WC_Product_ANOWOO_LOADER')){
 	     */
 	    public function loadPlugin() {
 	        
-	      add_action('bbp_loaded', [ $this,  'bbPressProductType']);
+	     // add_action('bbp_loaded', [ $this,  'bbPressProductType']);
 	        
-	      $this->BookProductType();
+	      //$this->BookProductType();
           $this->OpticProductType();
 	        
 	    }
