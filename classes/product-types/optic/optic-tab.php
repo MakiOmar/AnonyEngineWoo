@@ -2,19 +2,19 @@
 if ( !defined('ABSPATH') ) exit();
 
 class WC_Product_ANOWOO_OPTIC_TAB {
-	
-	/**
-	 * @var array Product type meta fields
-	 */
-	public $meta;
+    
+    /**
+     * @var array Product type meta fields
+     */
+    public $meta;
 
     /**
      * Build the instance
      * 
      */
     public function __construct( ) {
-    	
-    	$this->meta = [
+        
+        $this->meta = [
                 'size_price',
                 'base-curve',
                 'diameter',
@@ -27,8 +27,8 @@ class WC_Product_ANOWOO_OPTIC_TAB {
                 'lens_variaions'
             ];
     
-    	
-    	//Add product type to selector dropdown
+        
+        //Add product type to selector dropdown
         add_filter( 'product_type_selector', [ $this, 'addToSelector'] );
         
         //Add tab to tabs sidebar   
@@ -337,12 +337,12 @@ add_action('admin_enqueue_scripts', function () {
 });
 
 add_action('admin_footer', function () {?>
-    <script>	
-    	jQuery(document).ready(function($){
-    	    $('#lens_variaions').hide();
-    	    $.fn.lensAtchments = function(object){
-    	        var mediaUploader;
-    	        // if the media uploader already exists, open it
+    <script>    
+        jQuery(document).ready(function($){
+            $('#lens_variaions').hide();
+            $.fn.lensAtchments = function(object){
+                var mediaUploader;
+                // if the media uploader already exists, open it
                 if (mediaUploader) {
                     mediaUploader.open();
                     return;
@@ -366,7 +366,7 @@ add_action('admin_footer', function () {?>
         
                 // open the media uploader
                 mediaUploader.open();
-    	    }
+            }
             
         
             $('.lens-thumb-selector-button').click(function(e) {
@@ -413,7 +413,9 @@ add_action('admin_footer', function () {?>
                 if( jsonString == '' ){
                     return;
                 }
-                const imagesObject = JSON.parse(jsonString);
+                const unescapedString = jsonString.replace(/\\/g, '');
+                $('#lens_variaions').val(unescapedString);
+                const imagesObject = JSON.parse(unescapedString);
 
                 // Get a reference to the images container
                 const imagesContainer = $("#images-container");
@@ -487,7 +489,7 @@ add_action('admin_footer', function () {?>
                     
                     // If the lens variations textarea is empty, set its value to the result JSON string
                     if (variationsInput.val().trim() === '') {
-                      variationsInput.val(resultJson);
+                      variationsInput.val(resultJson.replace(/\\/g, ''));
                     } else {
                       // If the lens variations textarea is not empty, parse its value as JSON and append the result object to it
                       const existingJson = variationsInput.val().trim();
@@ -498,7 +500,7 @@ add_action('admin_footer', function () {?>
                       
                       // Convert the merged object to a JSON string and set the lens variations textarea value to the new JSON string
                       const mergedJson = JSON.stringify(mergedObj);
-                      variationsInput.val(mergedJson);
+                      variationsInput.val(mergedJson.replace(/\\/g, ''));
                     }
                     
                     /*
