@@ -311,7 +311,9 @@ class WC_Product_ANOWOO_OPTIC_TAB {
          * @return void
          */
         public function update($key, $post_id){
-            update_post_meta( $post_id, $key,   $_POST[$key]  );
+            if( isset( $_POST[$key] ) ){
+                update_post_meta( $post_id, $key,   $_POST[$key]  );
+            }
         }
         
         
