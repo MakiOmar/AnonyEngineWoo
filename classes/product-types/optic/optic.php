@@ -9,31 +9,31 @@ class WC_Product_ANOWOO_OPTIC extends WC_Product {
      */
     public function __construct( $product ) {
 
-    	
-    	$this->product_type = 'anowoo_optic';
-    	$this->supports[]   = 'ajax_add_to_cart';
-    	 
-		parent::__construct( $product );
-		
-		add_filter( 'woocommerce_product_add_to_cart_text' , [$this, 'single_add_to_cart_text']);
+        
+        $this->product_type = 'anowoo_optic';
+        $this->supports[]   = 'ajax_add_to_cart';
+         
+        parent::__construct( $product );
+        
+        add_filter( 'woocommerce_product_add_to_cart_text' , [$this, 'single_add_to_cart_text']);
         
     }
 
     public function single_add_to_cart_text() {
         
-    	global $product;
-    	
-    	$product_type = $product->get_type();
-    	
-    	switch ( $product_type ) {
-    		case 'anowoo_optic':
-    			return __( 'Add to cart', 'woocommerce' );
-    		break;
-    		
-    		default:
-    			return __( 'Add to cart', 'woocommerce' );
-    	}
-    	
+        global $product;
+        
+        $product_type = $product->get_type();
+        
+        switch ( $product_type ) {
+            case 'anowoo_optic':
+                return __( 'Add to cart', 'woocommerce' );
+            break;
+            
+            default:
+                return __( 'Add to cart', 'woocommerce' );
+        }
+        
     }
 
 }
@@ -101,9 +101,9 @@ define('OPTICS_GETTEXT_CART', serialize( array(
     'prescription'       => esc_html__( "With a prescription", 'wcpt' ),
 ) ));
 add_filter( 'woocommerce_add_cart_item_data', function ( $cart_item_data, $product_id, $variation_id ) {
-	global $woocommerce;
-	
-	
+    global $woocommerce;
+    
+    
     $size_price = get_post_meta( $product_id, 'size_price', true );
     
     if( empty($size_price) ) return $cart_item_data;
@@ -167,37 +167,37 @@ add_filter( 'woocommerce_add_cart_item_data', function ( $cart_item_data, $produ
     $session['size_price']               = $total_size_price;
     $session['total_package_size_price'] = $total_package_size_price ;
     
-	$woocommerce->session->set( 'optics_preferences', $session );
-	
+    $woocommerce->session->set( 'optics_preferences', $session );
+    
     return $cart_item_data;
 } , 10, 3 );
 
 add_action( 'woocommerce_add_order_item_meta', 'wcpt_add_values_to_order_item_meta' , 1, 2 );
 
 function wcpt_add_values_to_order_item_meta( $item_id, $values ) {
-	global $woocommerce,$wpdb;
-	$session = $woocommerce->session->get( 'optics_preferences' );
-	
-	if( is_array( $session ) ){
-		foreach( $session as $key => $value ){
-		    if( is_array($value) ){
-		        $_value = implode(',' ,$value);
-		    }else{
-		        $_value = $value;
-		    }
-			wc_add_order_item_meta( $item_id, $key, $_value );
-		}
-	}
+    global $woocommerce,$wpdb;
+    $session = $woocommerce->session->get( 'optics_preferences' );
+    
+    if( is_array( $session ) ){
+        foreach( $session as $key => $value ){
+            if( is_array($value) ){
+                $_value = implode(',' ,$value);
+            }else{
+                $_value = $value;
+            }
+            wc_add_order_item_meta( $item_id, $key, $_value );
+        }
+    }
 }
 add_filter( 'woocommerce_order_item_display_meta_key', function ( $display_key, $meta ) {
-	$fields = unserialize( WCPT_OPTICAL_FIELDS );
-	foreach( $optics_text as $field  ){
+    $fields = unserialize( WCPT_OPTICAL_FIELDS );
+    foreach( $optics_text as $field  ){
         if( $meta->key === $field ){
             return ucfirst(str_replace( ['_', '-'], ' ', $field ));
         }
     }
-	
-	return $display_key;
+    
+    return $display_key;
 
 
 } , 20, 2 );
@@ -225,9 +225,9 @@ add_filter( 'woocommerce_get_item_data', function ( $item_data, $cart_item ) {
 
 add_action( 'woocommerce_before_calculate_totals', function ( $cart_object ) {
 
-	foreach ( $cart_object->cart_contents as $cart_item_key => $value ) {
-	    $product_id = $value['product_id'];
-	    $product = wc_get_product($product_id);
+    foreach ( $cart_object->cart_contents as $cart_item_key => $value ) {
+        $product_id = $value['product_id'];
+        $product = wc_get_product($product_id);
         $thePrice = $product->get_price();
         $thePrice_right = 0;
         $thePrice_left= 0;
@@ -259,7 +259,7 @@ add_action( 'woocommerce_before_calculate_totals', function ( $cart_object ) {
         
         
         $value['data']->set_price( $thePrice/$value['quantity'] );
-	}
+    }
 }, 1100);
    
 
@@ -321,13 +321,15 @@ add_action('wp_enqueue_scripts', function(){
 
 function add_preview_section_to_product_image_container() {
         
-            echo '<div class="preview"><div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images" data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out 0s;">
-	<figure class="woocommerce-product-gallery__wrapper"><img id="preview-image" src=""></figure>
+            echo '<div class="preview"><div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images woocommerce-product-gallery--with-zoom" data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out 0s;">
+    <span class="woocommerce-product-gallery__wrapper"><a id="preview-image-url" href=""><img id="preview-image" src=""></span>
 </div></div>';
 }
 
 add_action( 'woocommerce_before_single_product', function(){
-    if( is_singular('product') ){
+    if( is_singular('product')){
+        global $product;
+        if( $product->get_type() !== 'anowoo_optic' ) return;
         $product_id = get_the_ID();
         $jsonString = get_post_meta($product_id,'lens_variaions',true);
         if( !empty( $jsonString ) ){
@@ -342,11 +344,53 @@ add_action( 'woocommerce_before_single_product', function(){
     }
 } );
 
+add_shortcode('anony-product-images', function(){
+    
+    if( is_singular('product')){
+        global $product;
+        if( $product->get_type() === 'anowoo_optic' ){
+            $product_id = get_the_ID();
+            $jsonString = get_post_meta($product_id,'lens_variaions',true);
+            if( !empty( $jsonString ) ){
+                $data = json_decode($jsonString, true);
+                if( $data && is_array($data) ){
+                    ob_start();
+                    add_preview_section_to_product_image_container();
+                    return ob_get_clean();
+                }
+            }
+        }
+        ob_start();
+        woocommerce_show_product_images();
+        return ob_get_clean();
+    }
+});
 
+add_action('wp_footer', function(){
+    return;
+?>
+    <script>
 
+    
+        var myDiv = document.querySelector('.preview');
 
+        myDiv.addEventListener('mousemove', function(event) {
+            var rect = myDiv.getBoundingClientRect();
+            var mouseX = event.clientX - rect.left;
+            var mouseY = event.clientY - rect.top;
 
+            // Check if the mouse is inside the div
+            if (mouseX >= 0 && mouseX < rect.width && mouseY >= 0 && mouseY < rect.height) {
+                let circle = document.getElementById('preview-image');
+                let left = event.offsetX;
+                let top = event.offsetY;
+                circle.style.left = left + 'px';
+                circle.style.top = top + 'px';
+            } else {
+                // Mouse is outside the div
+            }
+        });
+    </script>
+    <?php
 
-
-
-
+});
