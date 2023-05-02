@@ -162,6 +162,53 @@ foreach( $optics_inputs as $key ){
     input[name=with-power]{
     	display: none!important;
     }
+	#preview-image{
+        transition: 0.3s;
+		position:relative;
+    }
+    .woocommerce-product-gallery{
+        overflow:hidden
+    }
+    #preview-image:hover{
+		transform: scale(1.5);
+    }
+    #preview-image {
+	  cursor: url('<?php echo ANOWOO_URI . 'assets/images/zoom-in.png' ?>'), zoom-in;
+	  transition: transform 0.3s ease-out;
+	}
+	.lens-wrapper{
+    	display:inline-flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        margin: 5px;
+        width: 75px;
+    }
+    .lens-thumbnail {
+        display: inline-flex;
+        width: 70px;
+        height: 70px;
+        margin-right: 10px;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        padding:4px
+    }
+    #lens-thumbnails-container{
+        margin: 10px 0;
+    }
+    .lens-thumbnail.active-lens {
+      border: 2px solid #4CAF50;
+      border-radius: 50%;
+    }
+    #color-name{
+    	display:none
+    }
+    .lens-wrapper p{
+    	word-break: break-all;
+    	text-align:center;
+    	font-weight:bold
+    }
 </style>
 <?php
 
@@ -170,33 +217,18 @@ foreach( $optics_inputs as $key ){
     if( !empty( $jsonString ) ){
         $data = json_decode($jsonString, true);
         if( $data && is_array($data) ){
-            $html = '<style>
-                .lens-thumbnail {
-                    display: inline-flex;
-                    width: 70px;
-                    height: 70px;
-                    margin-right: 10px;
-                    justify-content: center;
-                    align-items: center;
-                    cursor: pointer;
-                    padding:4px
-                }
-                #lens-thumbnails-container{
-                    margin: 10px 0;
-                }
-                .lens-thumbnail.active-lens {
-                  border: 2px solid #4CAF50;
-                  border-radius: 50%;
-                }#color-name{display:none}</style>';
-            $html .= '<p id="selected-preview"></p><input type="text" id="color-name" name="lens_color_name" value="" readonly><div id="lens-thumbnails-container">';
+            $html .= '<!--<p id="selected-preview"></p>--><input type="text" id="color-name" name="lens_color_name" value="" readonly><div id="lens-thumbnails-container">';
             foreach ($data as $id => $item) {
             $thumbnailUrl = $item[0];
             $previewUrl = $item[1];
             $previewId = $item[2];
             $colorName = $item[3];
-            
+            $html .= '<div class="lens-wrapper">';
             $html .= '<div class="lens-thumbnail" data-preview-url="' . htmlspecialchars($previewUrl) . '" data-color-name="' . htmlspecialchars($colorName) . '">';
             $html .= '<img src="' . htmlspecialchars($thumbnailUrl) . '" alt="Thumbnail ' . htmlspecialchars($id) . '">';
+                
+            $html .= '</div>';
+            $html .= '<p>'.htmlspecialchars($colorName).'</p>';
             $html .= '</div>';
             
             
