@@ -643,6 +643,15 @@ foreach( $optics_inputs as $key ){
             var previewUrl = $(this).data('preview-url');
             var colorName = $(this).data('color-name');
             $('#preview-image').attr('src', previewUrl);
+            $('#preview-image-url').attr('href', previewUrl);
+            /*
+            $('.zoomImg').attr('src', previewUrl);
+            $('a.woocommerce-main-image').attr('href', previewUrl);
+            $('a.woocommerce-main-image').find('.attachment-woocommerce_single').attr('src', previewUrl);
+            $('a.woocommerce-main-image').find('.attachment-woocommerce_single').attr('data-src', previewUrl);
+            $('a.woocommerce-main-image').find('.attachment-woocommerce_single').attr('data-large_image', previewUrl);
+            $('a.woocommerce-main-image').find('.attachment-woocommerce_single').attr('srcset', previewUrl);
+            */
 
             $('#color-name').val(colorName);
             $('#selected-preview').text('Lens color: ' + colorName);
