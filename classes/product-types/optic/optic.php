@@ -320,10 +320,35 @@ add_action('wp_enqueue_scripts', function(){
 
 
 function add_preview_section_to_product_image_container() {
+	global $product;
+	$jsonString = get_post_meta($product->get_id(), 'lens_variaions', true);
+    $html = '';
+    if( !empty( $jsonString ) ){
+        $data = json_decode($jsonString, true);
+        if( $data && is_array($data) ){
+            $html .= '<div id="lens-thumbnails-container">';
+            foreach ($data as $id => $item) {
+            $thumbnailUrl = $item[0];
+            $previewUrl = $item[1];
+            $previewId = $item[2];
+            $colorName = $item[3];
+            $html .= '<div class="lens-wrapper">';
+            $html .= '<div class="lens-thumbnail" data-preview-url="' . htmlspecialchars($previewUrl) . '" data-color-name="' . htmlspecialchars($colorName) . '">';
+            $html .= '<img src="' . htmlspecialchars($thumbnailUrl) . '" alt="Thumbnail ' . htmlspecialchars($id) . '">';
+                
+            $html .= '</div>';
+            $html .= '<p>'.htmlspecialchars($colorName).'</p>';
+            $html .= '</div>';
+            
+            
+            }
+            $html .= '</div>';            
+        }
+    }
         
-            echo '<div class="preview"><div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images woocommerce-product-gallery--with-zoom" data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out 0s;">
-    <span class="woocommerce-product-gallery__wrapper"><a id="preview-image-url" href=""><img id="preview-image" src=""></span>
-</div></div>';
+    echo '<div class="preview"><div class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images woocommerce-product-gallery--with-zoom" data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out 0s;">
+    <span class="woocommerce-product-gallery__wrapper"><a id="preview-image-url" href=""><img id="preview-image" src=""></a></span>
+</div></div>' . $html;
 }
 
 add_action( 'woocommerce_before_single_product', function(){

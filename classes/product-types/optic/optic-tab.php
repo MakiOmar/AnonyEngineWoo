@@ -387,7 +387,7 @@ add_action('admin_footer', function () {?>
                 const deleteId = $(this).data("id");
                 
                 // Remove the image and delete button from the container
-                const imageElement = $(this).prev();
+                const imageElement = $(this).parent();
                 $(this).remove();
                 imageElement.remove();
                 
@@ -422,17 +422,21 @@ add_action('admin_footer', function () {?>
                 imagesContainer.html('');
                 // Loop through the object and generate the images and delete buttons
                 for (const key in imagesObject) {
-                  const imageSrc = imagesObject[key][0];
-                  const deleteId = key;
+                  const imageSrc  = imagesObject[key][0];
+                  const colorName = imagesObject[key][3];
+                  const deleteId  = key;
+					
+					console.log(colorName);
             
                   // Create the image element
-                  const imageElement = $("<img>").attr("src", imageSrc);
+                  const imageElement  = $("<img>").attr("src", imageSrc);
+                  const colorNameSpan = $("<p>").text(colorName);
             
                   // Create the delete button and set its data-id attribute
                   const deleteButton = $("<button>").text("x").attr("data-id", deleteId);
                   
                   // Create a container div and append the image and delete button to it
-                    const container = $("<div>").append(imageElement, deleteButton);
+                    const container = $("<div>").append(imageElement, colorNameSpan, deleteButton);
             
                   // Append the image and delete button to the container
                   imagesContainer.append(container);
@@ -537,8 +541,10 @@ add_action('admin_head', function(){?>
         }
         
         #images-container div {
+			
             position: relative;
             padding:10px;
+			text-align: center
         }
         
         #images-container div button{

@@ -212,34 +212,11 @@ foreach( $optics_inputs as $key ){
 </style>
 <?php
 
-    $jsonString = get_post_meta($product->get_id(), 'lens_variaions', true);
-    $html = '';
-    if( !empty( $jsonString ) ){
-        $data = json_decode($jsonString, true);
-        if( $data && is_array($data) ){
-            $html .= '<!--<p id="selected-preview"></p>--><input type="text" id="color-name" name="lens_color_name" value="" readonly><div id="lens-thumbnails-container">';
-            foreach ($data as $id => $item) {
-            $thumbnailUrl = $item[0];
-            $previewUrl = $item[1];
-            $previewId = $item[2];
-            $colorName = $item[3];
-            $html .= '<div class="lens-wrapper">';
-            $html .= '<div class="lens-thumbnail" data-preview-url="' . htmlspecialchars($previewUrl) . '" data-color-name="' . htmlspecialchars($colorName) . '">';
-            $html .= '<img src="' . htmlspecialchars($thumbnailUrl) . '" alt="Thumbnail ' . htmlspecialchars($id) . '">';
-                
-            $html .= '</div>';
-            $html .= '<p>'.htmlspecialchars($colorName).'</p>';
-            $html .= '</div>';
-            
-            
-            }
-            $html .= '</div>';            
-        }
-    }
+    
 
 ?>
 <form id="anowoo_optic_cart" class="anowoo_optic_cart" method="post" enctype='multipart/form-data' autocomplete="off">
-	<?php echo $html; ?>
+	<input type="text" id="color-name" name="lens_color_name" value="" readonly>
     <input type="checkbox" name="with-power">
 	<table id="optics-options" cellspacing="0">
 		<tbody>
