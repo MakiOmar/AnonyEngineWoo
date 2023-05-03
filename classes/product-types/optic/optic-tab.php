@@ -339,7 +339,7 @@ add_action('admin_enqueue_scripts', function () {
 add_action('admin_footer', function () {?>
     <script>    
         jQuery(document).ready(function($){
-            $('#lens_variaions').hide();
+            
             $.fn.lensAtchments = function(object){
                 var mediaUploader;
                 // if the media uploader already exists, open it
@@ -531,9 +531,6 @@ add_action('admin_footer', function () {?>
 
 add_action('admin_head', function(){?>
     <style>
-        .lens_variaions_field{
-            display:none;
-        }
         
         #images-container{
             display:flex;
