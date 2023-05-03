@@ -209,6 +209,9 @@ foreach( $optics_inputs as $key ){
     	text-align:center;
     	font-weight:bold
     }
+	.preview{
+		min-height: 350px;
+	}
 </style>
 <?php
 
@@ -630,8 +633,7 @@ foreach( $optics_inputs as $key ){
             $('a.woocommerce-main-image').find('.attachment-woocommerce_single').attr('srcset', previewUrl);
             */
 
-            $('#color-name').val(colorName);
-            $('#selected-preview').text('Lens color: ' + colorName);
+            $('#color-name').val(colorName).change();
             
             // Remove active class from all thumbnails
             $('.lens-thumbnail').removeClass('active-lens');
