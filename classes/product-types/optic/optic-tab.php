@@ -566,5 +566,8 @@ add_action('admin_head', function(){?>
         #images-container div img{
             width: 65px;
         }
+		.lens_variaions_field{
+			display: none
+		}
     </style>
 <?php });
