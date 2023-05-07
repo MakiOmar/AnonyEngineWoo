@@ -196,6 +196,7 @@ foreach( $optics_inputs as $key ){
     }
     #lens-thumbnails-container{
         margin: 10px 0;
+		text-align: center;
     }
     .lens-thumbnail.active-lens {
       border: 2px solid #4CAF50;
@@ -205,9 +206,10 @@ foreach( $optics_inputs as $key ){
     	display:none
     }
     .lens-wrapper p{
-    	word-break: break-all;
+    	word-break: break-word;
     	text-align:center;
-    	font-weight:bold
+    	font-weight:bold;
+		font-size: 13px
     }
 	.preview{
 		min-height: 350px;
@@ -215,9 +217,18 @@ foreach( $optics_inputs as $key ){
 </style>
 <?php
 
-    
+$size_price = get_post_meta( $product->get_id(), 'size_price', true );
+if( empty($size_price) ){
+	$size_price = 0;
+} 
 
+$stock_quantity = $product->get_stock_quantity();
+$stock_status = $product->get_stock_status();
 ?>
+<p class="stock-status">
+	<span class="<?php esc_attr( sanitize_html_class( 'stock ' . $stock_status ) ) ?> "><?php echo wc_get_stock_html( $product ) ?></span>
+</p>
+
 <form id="anowoo_optic_cart" class="anowoo_optic_cart" method="post" enctype='multipart/form-data' autocomplete="off">
 	<input type="text" id="color-name" name="lens_color_name" value="" readonly>
     <input type="checkbox" name="with-power">
@@ -369,24 +380,15 @@ foreach( $optics_inputs as $key ){
 			<?php } ;?>
 		</tbody>
 	</table>
-	<?php
 	
-	
-	
-	    $size_price = get_post_meta( $product->get_id(), 'size_price', true );
-	    if( !empty($size_price) ){
-	    
-	    ?>
-	        
-    	        <input type="hidden" class="size_price eye_option" name="size_price_right" data-target="eye_power_right" value="0"/>
+	<input type="hidden" class="size_price eye_option" name="size_price_right" data-target="eye_power_right" value="0"/>
     	        
-    	        <input type="hidden" class="size_price eye_option" name="size_price_left" data-target="eye_power_left" value="0"/>
-    	        
-    	        <input type="hidden" id="size_price" class="eye_option" name="size_price" value="<?php echo esc_attr($size_price) ?>"/>
-	       
-	    <?php } ?>
+	<input type="hidden" class="size_price eye_option" name="size_price_left" data-target="eye_power_left" value="0"/>
+
+	<input type="hidden" id="size_price" class="eye_option" name="size_price" value="<?php echo esc_attr($size_price) ?>"/>
+	      
 	    
-	    <input type="hidden" id="eyedeal"  name="eyedeal" value=""/>
+	<input type="hidden" id="eyedeal"  name="eyedeal" value=""/>
 
 
 	<p class="errormsg"></p>
